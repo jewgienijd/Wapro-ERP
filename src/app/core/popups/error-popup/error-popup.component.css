@@ -1,0 +1,15 @@
+.modal-content {
+    background-color: red;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 22px;
+    color: #fff;
+}
+
+.btn-close {
+    position: relative;
+    top: -20px;
+    right: -10px;
+    transform: scale(0.8);
+}

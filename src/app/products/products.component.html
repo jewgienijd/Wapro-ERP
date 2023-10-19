@@ -1,0 +1,41 @@
+<section id="products-section" class="container-fluid section-container">
+    <h1 class="text-center fw-bold">Oferta produktów WAPRO <span class="text-danger">ERP</span></h1>
+    <div class="section-content">
+        <div class="view-mode-btn-container">
+            <dx-button *ngIf="listViewMode" stylingMode="outlined" text="Układ kafelkowy" type="danger" [width]="200"
+                icon="smalliconslayout" (onClick)="toggleViewMode()">
+            </dx-button>
+            <dx-button *ngIf="!listViewMode" stylingMode="outlined" text="Układ listy" type="danger" [width]="200"
+                icon="contentlayout" (onClick)="toggleViewMode()">
+            </dx-button>
+        </div>
+        <div *ngIf="listViewMode" class="list-container">
+            <dx-list #list [dataSource]="products">
+                <div *dxTemplate="let data of 'item'" class="list-item d-flex align-items-center"
+                    (click)="navigateToProductDetails(data.productId)">
+                    <div class="list-item-title fw-bold text-center">{{ data.productName }}</div>
+                    <div class="list-item-description text-center">{{ data.description }}</div>
+                    <div class="list-item-price fw-bold text-center"
+                        [ngClass]="[data.basePrice > 500 ? 'bg-orange' : 'bg-green']">{{ data.basePrice | currency:'zł
+                        ':'symbol':'1.2-2' }}
+                    </div>
+                </div>
+            </dx-list>
+        </div>
+        <div *ngIf="!listViewMode" class="tiles-container">
+            <dx-tile-view [dataSource]="products" [baseItemHeight]="370" [baseItemWidth]="350" itemTemplate="tile"
+                direction="vertical" height="100%">
+                <div *dxTemplate="let data of 'tile'" class="tile-item"
+                    (click)="navigateToProductDetails(data.productId)">
+                    <p class="fw-bold text-center"><b>{{ data.productName }}</b></p>
+                    <p class="tile-item-description text-center">{{ data.description }}</p>
+                    <p class="fw-bold text-center" [ngClass]="[data.basePrice > 500 ? 'bg-orange' : 'bg-green']">{{
+                        data.basePrice | currency:'PLN
+                        ':'symbol':'1.2-2' }}
+                    </p>
+                </div>
+            </dx-tile-view>
+        </div>
+    </div>
+    <app-error-popup [error]="showError" [errorMessage]="errorText"></app-error-popup>
+</section>

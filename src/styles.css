@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '~font-awesome/css/font-awesome.css';
+
+body {
+    overflow: auto;
+    box-sizing: border-box;
+    font-family: "geomanist regular";
+}
+
+.section-container {
+    padding: 3em 8em;   
+    font-family: "geomanist regular";
+    color: #031f2c;
+}
+
+@media screen and (max-width: 992px) {
+    .section-container {
+      padding: 10px;
+    }
+}
+
+.section-content {
+    max-width: 1600px;
+    margin: 20px auto;        
+}

@@ -1,0 +1,104 @@
+.view-mode-btn-container {
+    position: relative;
+    right: 70px;
+    bottom: 10px;
+    text-align: end;
+}
+
+@media screen and (max-width: 768px) {
+    .view-mode-btn-container {
+        position: initial;
+        margin: auto;
+        text-align: center;
+        margin-bottom: 10px;
+    }   
+}
+
+.dx-list,
+.tile-item {
+    font-family: "geomanist regular";
+    color: #031f2c;
+    font-size: 18px;
+    border: 1px solid #dc1e28;
+    border-radius: 40px;
+}
+
+::ng-deep .dx-list-item:first-of-type {    
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+::ng-deep .dx-list-item:last-of-type {    
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.list-item {
+    padding: 15px;
+}
+
+.list-item-title {
+    flex-basis: 15%;
+}
+
+.list-item-description {
+    display: flex;
+    max-width: 60%;
+    margin: auto;
+    padding: 0 10px; 
+    white-space: normal;
+}
+
+.list-item-price {
+    flex-basis: 20%;
+}
+
+@media screen and (max-width: 768px) {
+    .list-item {
+      flex-direction: column;
+    }
+
+    .list-item-description {
+        max-width: 90%;
+    }
+}
+
+.tile-item {
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.6s ease;
+}
+
+::ng-deep .dx-tile {
+    border: none;
+    position: initial;
+    margin: 15px;
+}
+
+::ng-deep .dx-scrollview-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    height: 100% !important;
+}
+
+.tile-item:hover,
+.list-item:hover {
+    background-color: #dc1e28;
+    color: #fff;
+    cursor: pointer;
+}
+
+.tile-item-description {
+    height: 80%;
+}
+
+.bg-green {
+    background-color: green;
+}
+
+.bg-orange {
+    background-color: orange;
+}

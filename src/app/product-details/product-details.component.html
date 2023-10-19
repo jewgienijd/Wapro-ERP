@@ -1,0 +1,113 @@
+<section *ngIf="product" id="product-details-section" class="container-fluid section-container">
+    <h1 class="text-center fw-bold">{{product.productName}}</h1>
+    <div class="section-content">
+        <div class="container">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center text-uppercase">Informacje o produkcie</th>
+                        <th class="text-center text-uppercase">Szczegóły</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="product.productName">
+                        <td>Nazwa produktu</td>
+                        <td>{{product.productName}}</td>
+                    </tr>
+                    <tr *ngIf="product.productNameDescription">
+                        <td>Pełny opis nazwy produktu</td>
+                        <td>{{product.productNameDescription}}</td>
+                    </tr>
+                    <tr *ngIf="product.productUrl">
+                        <td>Adres URL produktu</td>
+                        <td>
+                            <a href="{{product.productUrl}}" target="_blank">{{product.productUrl}}</a>
+                        </td>
+                    </tr>
+                    <tr *ngIf="product.description">
+                        <td>Opis</td>
+                        <td>{{product.description}}</td>
+                    </tr>
+                    <tr *ngIf="product.productCode">
+                        <td>Kod produktu</td>
+                        <td>{{product.productCode}}</td>
+                    </tr>
+                    <tr *ngIf="product.operatingSystem">
+                        <td>System operacyjny</td>
+                        <td>{{product.operatingSystem}}</td>
+                    </tr>
+                    <tr>
+                        <td>Cena podstawowa</td>
+                        <td>{{product.basePrice | currency:'zł ':'symbol':'1.2-2'}}</td>
+                    </tr>
+                    <tr *ngIf="product.lastVersion">
+                        <td>Ostatnia wersja</td>
+                        <td>{{product.lastVersion}}</td>
+                    </tr>
+                    <tr *ngIf="product.lastReleaseDate">
+                        <td>Data ostatniej wersji</td>
+                        <td>{{product.lastReleaseDate | date: 'YYYY-MM-dd'}}</td>
+                    </tr>
+                    <tr *ngIf="product.maxNumberOfUsers">
+                        <td>Maksymalna liczba użytkowników</td>
+                        <td>{{product.maxNumberOfUsers}}</td>
+                    </tr>
+                    <tr *ngIf="product.requiredProducts && product.requiredProducts.length > 0">
+                        <td>Wymagane produkty</td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let requiredProduct of product.requiredProducts">
+                                    {{ requiredProduct.requiredProductName }}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr *ngIf="product.packets && product.packets.length > 0">
+                        <td>
+                            Dostępne pakiety
+                            <i class="fa fa-question-circle" title="{{product.packetDescription}}"></i>
+                        </td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let packet of product.packets">
+                                    {{ packet.packetName }}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr *ngIf="product.versions && product.versions.length > 0">
+                        <td>Wersje</td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let version of product.versions">
+                                    {{ version.versionNumber }} (Data wydania: {{ version.releaseDate | date:
+                                    'yyyy-MM-dd' }})
+                                    <br>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr *ngIf="product.variants && product.variants.length > 0">
+                        <td>
+                            Warianty
+                            <i class="fa fa-question-circle" title="{{product.variantDescription}}"></i>
+                        </td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let variant of product.variants">
+                                    {{ variant.variantName }}<br>
+                                    Maksymalna liczba użytkowników: {{ variant.maxNumberOfUsers }}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="btn-container w-100 text-center">
+                <a href="/products" class="btn btn-danger btn-lg" role="button">POWRÓT DO LISTY PRODUKTÓW</a>
+            </div>
+        </div>
+    </div>
+
+    <app-error-popup [error]="showError" [errorMessage]="errorText"></app-error-popup>
+</section>
